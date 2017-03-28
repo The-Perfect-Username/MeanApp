@@ -27,8 +27,8 @@ router.get('/task/:id', function(req, res, next){
 
 // Save a task to document tasks
 router.post("/task", function(req, res, next) {
-    var trask = req.body;
-    if (!task.title || (task.isDone + '')) {
+    var task = req.body;
+    if (!task.title || !(task.isDone + '')) {
         res.status(400);
         res.json({
             "error": "Bad data"

@@ -17,6 +17,16 @@ var TaskService = (function () {
         this.http = http;
         console.log('Task Service Initialised...');
     }
+    TaskService.prototype.getTasks = function () {
+        return this.http.get('/api/tasks')
+            .map(function (res) { return res.json(); });
+    };
+    TaskService.prototype.addTask = function (newTask) {
+        var headers = new http_1.Headers();
+        headers.append('Content-Type', 'application/json');
+        return this.http.post('/api/task', JSON.stringify(newTask), { headers: headers })
+            .map(function (res) { return res.json(); });
+    };
     return TaskService;
 }());
 TaskService = __decorate([
